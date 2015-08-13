@@ -51,7 +51,7 @@ namespace SensorAverage.Elena
                             //разбираем информацию на составляющие
 
 
-                            codeRezult = (ushort)(data[arreyCount] >> 12);
+                            codeRezult = (ushort)(data[arreyCount] >> 13);
                             Average.code = codeRezult;
                             bool isCode = Array.TrueForAll(sensorCode, (codeOfSensor)=>(codeOfSensor!=codeRezult));
                             if (isCode)
