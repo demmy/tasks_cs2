@@ -28,7 +28,6 @@ namespace Arrays2.Elena
 
                     }
                     thereIsLine = true;
-                    break;
                 }
             }
 
@@ -39,10 +38,6 @@ namespace Arrays2.Elena
         {
             int sum;
             int[][] newAray=new int[5][];
-            for (int i=0; i<newAray.Length; i++)
-            {
-            newAray[i] = new int[10];
-            }
             for(int i=0; i<inputArray.Length;i++)
             {
                 for(int j=0; j<inputArray[i].Length; j++)
