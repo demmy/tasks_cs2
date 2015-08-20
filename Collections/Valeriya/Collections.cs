@@ -51,11 +51,6 @@ namespace Collections.Valeriya
                 countOfValuesFromEachSensor[indexOfSensor]++;
             }
 
-            for (int i = 0; i < sumOfSensorsData.Length; i++)
-            {
-                averageFromSensors[i] = Tuple.Create(codesOfSensors[i], sumOfSensorsData[i] / countOfDataForEachSensor[i]);
-            }
-
             return sensorsAverage;
         }
 
