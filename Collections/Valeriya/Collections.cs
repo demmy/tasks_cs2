@@ -15,7 +15,48 @@ namespace Collections.Valeriya
 
         public List<IOutData> ProcessData(IReadOnlyList<IInData> inputData)
         {
-            throw new NotImplementedException();
+            List<IOutData> sensorsAverage = new List<IOutData>();
+            List<int> codesOfSensors = new List<int>();
+            List<int> sumsFromSensors = new List<int>();
+            List<int> countOfValuesFromEachSensor = new List<int>();
+            int indexOfSensor = 0;
+            int count = inputData.Count;
+            for (int i = 0; i < count - 1; i++)
+            {
+                if (inputData[i].IsValid == true)
+                {
+                    if (inputData[i].Code == inputData[i + 1].Code)
+                    {
+                        codesOfSensors[indexOfSensor] = inputData[i].Code;
+                        sumsFromSensors[indexOfSensor] += inputData[i].Value;
+                        countOfValuesFromEachSensor[indexOfSensor]++;
+                    }
+                    else
+                    {
+                        sumsFromSensors[indexOfSensor] += inputData[i].Value;
+                        countOfValuesFromEachSensor[indexOfSensor]++;
+                        indexOfSensor++;
+                    }
+                }
+            }
+            if (inputData[count - 2].Code == inputData[count - 1].Code && inputData[count - 1].IsValid)
+            {
+                codesOfSensors[indexOfSensor] = inputData[count - 1].Code;
+                sumsFromSensors[indexOfSensor] += inputData[count - 1].Value;
+                countOfValuesFromEachSensor[indexOfSensor]++;
+            }
+            else
+            {
+                sumsFromSensors[indexOfSensor] += inputData[count - 1].Value;
+                countOfValuesFromEachSensor[indexOfSensor]++;
+            }
+
+            for (int i = 0; i < sumOfSensorsData.Length; i++)
+            {
+                averageFromSensors[i] = Tuple.Create(codesOfSensors[i], sumOfSensorsData[i] / countOfDataForEachSensor[i]);
+            }
+
+            return sensorsAverage;
         }
 
         public int SortPotatoes(List<IPotatoe> potatoeBag, out List<IPotatoe> goodPotatoes, out List<IPotatoe> badPotatoes)
