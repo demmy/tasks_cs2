@@ -16,39 +16,67 @@ namespace Collections.Valeriya
         public List<IOutData> ProcessData(IReadOnlyList<IInData> inputData)
         {
             List<IOutData> sensorsAverage = new List<IOutData>();
+            List<IInData> onlyValidFromInputData = new List<IInData>();
             List<int> codesOfSensors = new List<int>();
-            List<int> sumsFromSensors = new List<int>();
+            List<double> sumsFromSensors = new List<double>();
             List<int> countOfValuesFromEachSensor = new List<int>();
-            int indexOfSensor = 0;
-            int count = inputData.Count;
-            for (int i = 0; i < count - 1; i++)
+
+            for (int i = 0; i < inputData.Count; i++)
             {
                 if (inputData[i].IsValid == true)
                 {
-                    if (inputData[i].Code == inputData[i + 1].Code)
+                    onlyValidFromInputData.Add(inputData[i]);
+                }
+            }
+
+            int count = onlyValidFromInputData.Count;
+
+            for (int i = 0; i < count - 1; i++)
+            {
+                    if (onlyValidFromInputData[i].Code == onlyValidFromInputData[i + 1].Code)
                     {
-                        codesOfSensors[indexOfSensor] = inputData[i].Code;
-                        sumsFromSensors[indexOfSensor] += inputData[i].Value;
-                        countOfValuesFromEachSensor[indexOfSensor]++;
+                        codesOfSensors.Add (onlyValidFromInputData[i].Code);
+                        sumsFromSensors.Add(onlyValidFromInputData[i].Value);
+                        countOfValuesFromEachSensor.Add(1);
                     }
                     else
                     {
-                        sumsFromSensors[indexOfSensor] += inputData[i].Value;
-                        countOfValuesFromEachSensor[indexOfSensor]++;
-                        indexOfSensor++;
+                        if (codesOfSensors.Contains(onlyValidFromInputData[i].Code))
+                        {
+                            sumsFromSensors[codesOfSensors.IndexOf(onlyValidFromInputData[i].Code)] += onlyValidFromInputData[i].Value;
+                            countOfValuesFromEachSensor[codesOfSensors.IndexOf(onlyValidFromInputData[i].Code)] += 1;
+                        }
+                        else
+                        {
+                            codesOfSensors.Add(onlyValidFromInputData[i].Code);
+                            sumsFromSensors.Add(onlyValidFromInputData[i].Value);
+                            countOfValuesFromEachSensor.Add(1);
+                        }
                     }
-                }
             }
-            if (inputData[count - 2].Code == inputData[count - 1].Code && inputData[count - 1].IsValid)
+            if (onlyValidFromInputData[count - 2].Code == onlyValidFromInputData[count - 1].Code)
             {
-                codesOfSensors[indexOfSensor] = inputData[count - 1].Code;
-                sumsFromSensors[indexOfSensor] += inputData[count - 1].Value;
-                countOfValuesFromEachSensor[indexOfSensor]++;
+                sumsFromSensors[codesOfSensors.IndexOf(onlyValidFromInputData[count - 1].Code)] += onlyValidFromInputData[count - 1].Value;
+                countOfValuesFromEachSensor[codesOfSensors.IndexOf(onlyValidFromInputData[count - 1].Code)] += 1;
             }
             else
             {
-                sumsFromSensors[indexOfSensor] += inputData[count - 1].Value;
-                countOfValuesFromEachSensor[indexOfSensor]++;
+                if (codesOfSensors.Contains(onlyValidFromInputData[count - 1].Code))
+                {
+                    sumsFromSensors[codesOfSensors.IndexOf(onlyValidFromInputData[count - 1].Code)] += onlyValidFromInputData[count - 1].Value;
+                    countOfValuesFromEachSensor[codesOfSensors.IndexOf(onlyValidFromInputData[count - 1].Code)]++;
+                }
+                else
+                {
+                    codesOfSensors.Add(onlyValidFromInputData[count - 1].Code);
+                    sumsFromSensors.Add(onlyValidFromInputData[count - 1].Value);
+                    countOfValuesFromEachSensor.Add(1);
+                }
+            }
+
+            for (int i = 0; i < sumsFromSensors.Count; i++)
+            {
+                sensorsAverage.Add(new OutData(codesOfSensors[i], sumsFromSensors[i] / countOfValuesFromEachSensor[i])); 
             }
 
             return sensorsAverage;
