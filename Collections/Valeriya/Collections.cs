@@ -10,7 +10,39 @@ namespace Collections.Valeriya
     {
         public LinkedList<int> CreateOrderedList(IReadOnlyList<int> input)
         {
-            throw new NotImplementedException();
+            LinkedList<int> orderedList = new LinkedList<int>();
+            orderedList.AddFirst(input[0]);
+            int insertFlag = 0;
+            for (int i = 1; i < input.Count; i++)
+            {
+                    var node = orderedList.First;
+                    while (node != orderedList.Last)
+                    {
+                        if (node.Value >= input[i])
+                        {
+                            orderedList.AddBefore(node, input[i]);
+                            insertFlag = 1;
+                            break;
+                        }
+
+                        node = node.Next;
+                    }
+                if (insertFlag == 0)
+                {
+                    if (input[i] > orderedList.Last.Value)
+                    {
+                        orderedList.AddAfter(node, input[i]);
+                    }
+                    else
+                    {
+                        orderedList.AddBefore(node, input[i]);
+                    }
+                }
+
+                insertFlag = 0;
+            }
+
+            return orderedList;
         }
 
         public List<IOutData> ProcessData(IReadOnlyList<IInData> inputData)
