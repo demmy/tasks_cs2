@@ -91,11 +91,5 @@ namespace Collections.Konstantin
             }
             return orderedList;
         }
-
-
-        public IReadOnlyDictionary<char, IList<string>> OrganizeByFirstCharacter(IEnumerable<string> text)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
