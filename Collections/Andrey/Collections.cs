@@ -24,11 +24,5 @@ namespace Collections.Andrey
         {
             throw new NotImplementedException();
         }
-
-
-        public IReadOnlyDictionary<char, IList<string>> OrganizeByFirstCharacter(IEnumerable<string> text)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

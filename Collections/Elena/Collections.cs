@@ -112,11 +112,5 @@ namespace Collections.Elena
             
             return outputList;
         }
-
-
-        public IReadOnlyDictionary<char, IList<string>> OrganizeByFirstCharacter(IEnumerable<string> text)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
