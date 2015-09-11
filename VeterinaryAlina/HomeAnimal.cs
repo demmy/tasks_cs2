@@ -16,7 +16,10 @@ namespace VeterinaryAlina
         protected bool isAlergicToMedication;
         int uniqueCode;
         DateTime registrationDate;
+        public HomeAnimal()
+        {
 
+        }
         public HomeAnimal
             (string name, int birthYear, string genderOfAnimal, bool isHealthy, bool isVaccinated, bool isAlergicToMedication, DateTime registrationDate)
         {

@@ -8,6 +8,14 @@ namespace VeterinaryAlina
 {
     public class HomeParrot : HomeAnimal
     {
+        string disease;
+        public HomeParrot(string name, int birthYear, string genderOfAnimal, bool isHealthy,
+            bool isVaccinated, bool isAlergicToMedication, DateTime registrationDate, ParrotBrids brid, string disease)
+            : base(name, birthYear, genderOfAnimal, isHealthy,
+            isVaccinated, isAlergicToMedication, registrationDate)
+        {
+            this.disease = disease;
+        }
         public enum ParrotBrids
         {
             Cockatiel,

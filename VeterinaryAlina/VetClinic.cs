@@ -8,5 +8,7 @@ namespace VeterinaryAlina
 {
     public class VetClinic
     {
+        Dictionary<string, HomeAnimal> clinic;
+
     }
 }

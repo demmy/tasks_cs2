@@ -10,6 +10,8 @@ namespace VeterinaryAlina
     {
         static void Main(string[] args)
         {
+            HomeFish fish1 = new HomeFish("Tom", 2015, "male", false, true, false, new DateTime(2015, 9, 11), HomeFish.FishBrids.Barb, "fractured fin");
+            HomeFish fish2 = new HomeFish("Molly", 2015, "female", true, true, false, new DateTime(2015, 9, 11), HomeFish.FishBrids.Cory);
         }
     }
 }
