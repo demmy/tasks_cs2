@@ -6,33 +6,30 @@ using System.Threading.Tasks;
 
 namespace Encapsulation.Elena
 {
-    public static class SortedData
-    {
-      public static  SortedSet<PriorityQueue> OurSetWhithData = new SortedSet<PriorityQueue>(new SortQueueByPriority());
-    }
 
-   public class PriorityQueue : IPriorityQueue<object>
+    public class PriorityQueue<T> : IPriorityQueue<T>
+                                    , ICollection<Tuple<int, T>>
     {
-        private int  priority;
-        private Queue<object> queueForPriority;
+        private int priority;
+        private Queue<T> queueForPriority;
+        public SortedSet<PriorityQueue<T>> OurSetWhithData = new SortedSet<PriorityQueue<T>>();//(new SortQueueByPriority());
 
         public int Priority
         {
             get { return priority; }
         }
 
-        
-        public PriorityQueue(int p, Queue<object> q)
+
+        public PriorityQueue(int p, Queue<T> q)
         {
             priority = p;
             queueForPriority = q;
         }
 
-        public void Enqueue(object val, int priority)
+        public void Enqueue(T val, int priority)
         {
             bool isPriorityExist = false;
-            foreach (PriorityQueue p in SortedData.OurSetWhithData)
-                
+            foreach (PriorityQueue<T> p in OurSetWhithData)
             {
                 if (p.priority == priority)
                 {
@@ -43,131 +40,108 @@ namespace Encapsulation.Elena
 
             if (!isPriorityExist)
             {
-                Queue<object> q = new Queue<object>();
+                Queue<T> q = new Queue<T>();
                 q.Enqueue(val);
-                
-                SortedData.OurSetWhithData.Add(new PriorityQueue(priority, q));
+
+                OurSetWhithData.Add(new PriorityQueue<T>(priority, q));
             }
 
-           
+
         }
 
-        public object Dequeue()
+        public T Dequeue()
         {
-            object decueue;
-            try
+            if (this.Count <= 0)
             {
-                decueue = SortedData.OurSetWhithData.First<PriorityQueue>().queueForPriority.Dequeue();
+                throw new InvalidOperationException();
             }
 
-            catch (InvalidOperationException)
-            {
-                decueue = null;
-            }
-               
-            return decueue;
+            return OurSetWhithData.First<PriorityQueue<T>>().queueForPriority.Dequeue();
         }
 
-        public object First()
+        public T First()
         {
-            object first;
-            try
+            if (this.Count <= 0)
             {
-                first = SortedData.OurSetWhithData.First<PriorityQueue>().queueForPriority.Peek();
+                throw new InvalidOperationException();
             }
-            catch (InvalidOperationException)
-            {
-                first = null;
-            }
+            return OurSetWhithData.First<PriorityQueue<T>>().queueForPriority.Peek();
 
-            return first;
         }
 
-        public object First(int priority)
+        public T First(int priority)
         {
-            object first =null;
+
             try
             {
-                
-                foreach (PriorityQueue p in SortedData.OurSetWhithData)
+                foreach (PriorityQueue<T> p in OurSetWhithData)
                 {
                     if (p.priority == priority)
                     {
-                        first = p.queueForPriority.Peek();
+                        return p.queueForPriority.Peek();
                     }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                first = null;
-            }
 
-            return first;
+                } throw new InvalidOperationException();
+            }
+            catch
+            { throw new InvalidOperationException(); }
+
         }
 
-        public object Last()
+        public T Last()
         {
-            object last;
-            try
+            if (this.Count <= 0)
             {
-                last = SortedData.OurSetWhithData.Last<PriorityQueue>().queueForPriority.Last<object>();
+                throw new InvalidOperationException();
             }
-            catch (InvalidOperationException)
-            {
-                last = null;
-            }
-            return last;
+            return OurSetWhithData.Last<PriorityQueue<T>>().queueForPriority.Last<T>();
         }
 
-        public object Last(int priority)
+        public T Last(int priority)
         {
-            object last=null;
             try
             {
-                foreach (PriorityQueue p in SortedData.OurSetWhithData)
+                foreach (PriorityQueue<T> p in OurSetWhithData)
                 {
                     if (p.priority == priority)
                     {
-                        last = p.queueForPriority.Last<object>();
+                        return p.queueForPriority.Last<T>();
                     }
-                }
-            }
 
-
-            catch (InvalidOperationException)
-            {
-                last = null;
+                } throw new InvalidOperationException();
             }
-            return last;
+            catch
+            { throw new InvalidOperationException(); }
+            throw new InvalidOperationException();
         }
 
         public int Count
         {
-            get 
+            get
             {
-                int allCount=0;
+                int allCount = 0;
                 try
                 {
-                    foreach (PriorityQueue p in SortedData.OurSetWhithData)
+                    foreach (PriorityQueue<T> p in OurSetWhithData)
                     {
-                       
-                            allCount += p.queueForPriority.Count();
-                        
+
+                        allCount += p.queueForPriority.Count();
+
                     }
                 }
 
                 catch (InvalidOperationException)
-                {  }
+                { }
                 return allCount;
             }
         }
 
         public int GetCount(int priority)
         {
-            int countInThisQoueu=0;
+            int countInThisQoueu = 0;
             try
             {
-                foreach (PriorityQueue p in SortedData.OurSetWhithData)
+                foreach (PriorityQueue<T> p in OurSetWhithData)
                 {
                     if (p.priority == priority)
                     {
@@ -179,22 +153,116 @@ namespace Encapsulation.Elena
             { }
             return countInThisQoueu;
         }
-    }
 
-    class SortQueueByPriority : IComparer<PriorityQueue>
-    {
-        
-        public int Compare(PriorityQueue pq1, PriorityQueue pq2)
+
+
+        public void Add(Tuple<int, T> item)
         {
-            int resultOfCompare = 0;
-            if (pq1.Priority > pq2.Priority)
-            { resultOfCompare = 1; }
-            if (pq1.Priority < pq2.Priority)
-            { resultOfCompare = -1; }
-            return resultOfCompare;
+            this.Enqueue(item.Item2, item.Item1);
         }
 
+        public void Clear()
+        {
+            while (this.Count > 0)
+            {
+                OurSetWhithData.Clear();
+            }
+        }
 
+        public bool Contains(Tuple<int, T> item)
+        {
+            bool result = false;
+            if (GetCount(item.Item1) > 0)
+            {
+                foreach (PriorityQueue<T> p in OurSetWhithData)
+                {
+                    if (p.priority == item.Item1)
+                    {
+                        result = p.queueForPriority.Contains(item.Item2);
+                    }
+                }
+            }
+
+            else
+            {
+                throw new InvalidOperationException();
+            }
+
+            return result;
+        }
+
+        public void CopyTo(Tuple<int, T>[] array, int arrayIndex)
+        {
+            int countOfArray = this.Count;
+            for (int i = arrayIndex; i < countOfArray; i++)
+            {
+                array[i] = new Tuple<int, T>(1, this.Dequeue());
+            }
+        }
+
+        public bool IsReadOnly
+        {
+            get { return false; }
+        }
+
+        public bool Remove(Tuple<int, T> item)
+        {
+            bool isRemove = false;
+            if (Contains(item))
+            {
+
+            }
+
+            return isRemove;
+        }
+
+        public IEnumerator<Tuple<int, T>> GetEnumerator()
+        {
+            Tuple<int, T> t; //= new Tuple<int, T>(); 
+            int priority;
+            foreach (var p in this.OurSetWhithData)
+            {
+                priority = p.priority;
+                foreach (var element in p.queueForPriority)
+                {
+                    t = new Tuple<int, T>(priority, element);
+                    yield return t;
+                }
+            }
+
+
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            Tuple<int, T> t; //= new Tuple<int, T>(); 
+            int priority;
+            foreach (var p in this.OurSetWhithData)
+            {
+                priority = p.priority;
+                foreach (var element in p.queueForPriority)
+                {
+                    t = new Tuple<int, T>(priority, element);
+                    yield return t;
+                }
+            }
+        }
     }
+
+    /* class SortQueueByPriority : IComparer<PriorityQueue<T>>
+     {
+        
+         public int Compare(PriorityQueue<T> pq1, PriorityQueue<T> pq2)
+         {
+             int resultOfCompare = 0;
+             if (pq1.Priority > pq2.Priority)
+             { resultOfCompare = 1; }
+             if (pq1.Priority < pq2.Priority)
+             { resultOfCompare = -1; }
+             return resultOfCompare;
+         }
+
+
+     }*/
 }
 

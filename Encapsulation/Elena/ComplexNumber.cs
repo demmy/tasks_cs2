@@ -69,23 +69,17 @@ namespace Encapsulation.Elena
             {
                 return new ComplexNumber(operand1.real / div, operand1.imegion / div);
             }
-            else { return null; }
+            else { throw new System.DivideByZeroException();  }
         }
 
         public static bool operator ==(ComplexNumber operand1, ComplexNumber operand2)
         {
-            bool returnValue = false;
-            if (operand1.real == operand2.real && operand1.imegion == operand2.imegion)
-            { returnValue = true; }
-            return returnValue;
+            return operand1.real == operand2.real && operand1.imegion == operand2.imegion;
         }
 
         public static bool operator !=(ComplexNumber operand1, ComplexNumber operand2)
         {
-            bool returnValue = false;
-            if (operand1.real != operand2.real && operand1.imegion != operand2.imegion)
-            { returnValue = true; }
-            return returnValue;
+            return operand1.real != operand2.real && operand1.imegion != operand2.imegion;
         }
 
         public static implicit operator string(ComplexNumber operand1)
