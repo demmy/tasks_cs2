@@ -22,7 +22,7 @@ namespace VeterinaryAlina
             Roborovski,
             Chinese,
             WinterWhite,
-            Campbell,
+            Campbell
         }
     }
 }

@@ -10,24 +10,11 @@ namespace VeterinaryAlina
     {
         string disease;
         public HomeCat(string name, int birthYear, string genderOfAnimal, bool isHealthy,
-            bool isVaccinated, bool isAlergicToMedication, DateTime registrationDate, CatBrids brid, string disease)
+            bool isVaccinated, bool isAlergicToMedication, DateTime registrationDate, string brid, string disease)
             : base(name, birthYear, genderOfAnimal, isHealthy,
             isVaccinated, isAlergicToMedication, registrationDate)
         {
             this.disease = disease;
-        }
-        public enum CatBrids
-        {
-            Balinese,
-            Bengal,
-            Birman,
-            Bombay,
-            Burmese,
-            Chartreux,
-            Cymric,
-            Himalayan,
-            Javanese,
-            MaineCoon
         }
     }
 }

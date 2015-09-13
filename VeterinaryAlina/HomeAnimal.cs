@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VeterinaryAlina
 {
-    public class HomeAnimal
+    public abstract class HomeAnimal
     {
         string name;
         int birthYear;
@@ -14,7 +14,21 @@ namespace VeterinaryAlina
         protected bool isHealthy;
         protected bool isVaccinated;
         protected bool isAlergicToMedication;
-        int uniqueCode;
+        static int uniqueCode=0;
+        public int AnimalID { get; protected set; }
+        static Dictionary<AnimalType, List<string>> animalBrids = new Dictionary<AnimalType, List<string>>() 
+        { 
+            {AnimalType.Cat, new List<string>{"Balinese", "Bengal", "Birman", "Bombay",
+                "Burmese","Chartreux", "Cymric", "Himalayan", "Javanese", "MaineCoon"}},
+            {AnimalType.Dog, new List<string>{"Affenpinscher", "Akita", "Basenji", "Beagl",
+                "Bloodhound", "Dalmatian", "Greyhound", "Harrier", "Keeshond", "Kuvasz"}},
+            {AnimalType.Fish, new List<string>{"Angelfish", "Barb", "Betta", "Catfish", 
+                "Cichlid", "Cory", "Danio", "Discus", "Firemouth", "Goldfish"}},
+            {AnimalType.Hamster, new List<string> {"Syrian", "Roborovski", "Chinese",
+                "WinterWhite", "Campbell"}},
+            {AnimalType.Parrot, new List<string>{"Cockatiel", "Lovebird", "Parrotlet",
+                "Caique", "Poicephalus", "Amazon", "Eclectus", "Macaw", "Cockatoos", "Lorie", "Parakeet"}}
+        }; 
         DateTime registrationDate;
         public HomeAnimal()
         {
@@ -30,6 +44,11 @@ namespace VeterinaryAlina
             this.isVaccinated = isVaccinated;
             this.isAlergicToMedication = isAlergicToMedication;
             this.registrationDate = registrationDate;
+            this.AnimalID = GetFreeCode();
+        }
+        public static  int GetFreeCode()
+        {
+            return ++uniqueCode;
         }
     }
 }

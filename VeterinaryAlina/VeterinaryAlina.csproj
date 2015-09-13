@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimalFactory.cs" />
+    <Compile Include="ConsoleHelper.cs" />
     <Compile Include="HomeAnimal.cs" />
     <Compile Include="HomeCat.cs" />
     <Compile Include="HomeDog.cs" />
