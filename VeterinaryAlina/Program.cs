@@ -10,26 +10,27 @@ namespace VeterinaryAlina
     {
         static void Main(string[] args)
         {
-            HomeFish fish1 = new HomeFish("Tom", 2015, "male", false, true, false, new DateTime(2015, 9, 11), HomeFish.FishBrids.Barb, "fractured fin");
-            HomeFish fish2 = new HomeFish("Molly", 2015, "female", true, true, false, new DateTime(2015, 9, 11), HomeFish.FishBrids.Cory);
+            bool isRuning = true;
             VetClinic myClinic = new VetClinic("Home Animal Clinic");
-
-            switch (ConsoleHelper.PrintMenu())
+            do
             {
-                case MainMenu.AboutClinic: myClinic.PrintAboutClinic();
-                    break;
-                case MainMenu.PutToClinic:
-                    break;
-                case MainMenu.AnimalList:
-                    break;
-                case MainMenu.DischargeAnimal:
-                    break;
-                case MainMenu.QuitProgram:
-                    break;
-                default:
-                    break;
-            }
-            Console.ReadKey();
+                Console.Clear();
+                switch (ConsoleHelper.PrintMenu())
+                {
+                    case MainMenu.AboutClinic: myClinic.PrintAboutClinic();
+                        break;
+                    case MainMenu.PutToClinic: myClinic.PutAnimalToClinic();
+                        break;
+                    case MainMenu.AnimalList: myClinic.ShowListOfAnimals();
+                        break;
+                    case MainMenu.DischargeAnimal: myClinic.DischargeAnimal();
+                        break;
+                    case MainMenu.QuitProgram: isRuning = false;
+                        break;
+                    default:
+                        break;
+                }
+            } while (isRuning);
         }
     }
 }

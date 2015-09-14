@@ -9,25 +9,20 @@ namespace VeterinaryAlina
     public class HomeDog : HomeAnimal
     {
         string disease;
-        public HomeDog(string name, int birthYear, string genderOfAnimal, bool isHealthy,
-            bool isVaccinated, bool isAlergicToMedication, DateTime registrationDate, DogBrids brid, string disease)
+        string animalBrid;
+        public HomeDog(string name, DateTime birthYear, string genderOfAnimal, bool isHealthy,
+            bool isVaccinated, bool isAlergicToMedication, DateTime registrationDate, string animalBrid, string disease)
             : base(name, birthYear, genderOfAnimal, isHealthy,
-            isVaccinated, isAlergicToMedication, registrationDate)
+            isVaccinated, isAlergicToMedication, registrationDate, animalBrid)
         {
             this.disease = disease;
+            this.animalBrid = animalBrid;
         }
-        public enum DogBrids
+        public override string ToString()
         {
-            Affenpinscher,
-            Akita,
-            Basenji,
-            Beagl,
-            Bloodhound,
-            Dalmatian,
-            Greyhound,
-            Harrier,
-            Keeshond,
-            Kuvasz
+            return String.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}",
+                this.AnimalID, this.name, this.genderOfAnimal, this.animalBrid, this.birthYear,
+                this.registrationDate, this.isHealthy, this.disease, this.isVaccinated, this.isVaccinated);
         }
     }
 }

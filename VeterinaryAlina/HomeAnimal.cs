@@ -8,15 +8,15 @@ namespace VeterinaryAlina
 {
     public abstract class HomeAnimal
     {
-        string name;
-        int birthYear;
-        string genderOfAnimal;
+        protected string name;
+        protected DateTime birthYear;
+        protected string genderOfAnimal;
         protected bool isHealthy;
         protected bool isVaccinated;
         protected bool isAlergicToMedication;
         static int uniqueCode=0;
         public int AnimalID { get; protected set; }
-        static Dictionary<AnimalType, List<string>> animalBrids = new Dictionary<AnimalType, List<string>>() 
+        public static Dictionary<AnimalType, List<string>> animalBrids = new Dictionary<AnimalType, List<string>>() 
         { 
             {AnimalType.Cat, new List<string>{"Balinese", "Bengal", "Birman", "Bombay",
                 "Burmese","Chartreux", "Cymric", "Himalayan", "Javanese", "MaineCoon"}},
@@ -27,15 +27,16 @@ namespace VeterinaryAlina
             {AnimalType.Hamster, new List<string> {"Syrian", "Roborovski", "Chinese",
                 "WinterWhite", "Campbell"}},
             {AnimalType.Parrot, new List<string>{"Cockatiel", "Lovebird", "Parrotlet",
-                "Caique", "Poicephalus", "Amazon", "Eclectus", "Macaw", "Cockatoos", "Lorie", "Parakeet"}}
-        }; 
-        DateTime registrationDate;
+                "Caique", "Poicephalus", "Amazon", "Eclectus", "Macaw", "Cockatoos", "Lorie"}}
+        };
+        protected DateTime registrationDate;
         public HomeAnimal()
         {
 
         }
         public HomeAnimal
-            (string name, int birthYear, string genderOfAnimal, bool isHealthy, bool isVaccinated, bool isAlergicToMedication, DateTime registrationDate)
+            (string name, DateTime birthYear, string genderOfAnimal, bool isHealthy, bool isVaccinated,
+            bool isAlergicToMedication, DateTime registrationDate, string animalBris)
         {
             this.name = name;
             this.birthYear = birthYear;

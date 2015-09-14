@@ -9,26 +9,20 @@ namespace VeterinaryAlina
     public class HomeParrot : HomeAnimal
     {
         string disease;
-        public HomeParrot(string name, int birthYear, string genderOfAnimal, bool isHealthy,
-            bool isVaccinated, bool isAlergicToMedication, DateTime registrationDate, ParrotBrids brid, string disease)
+        string animalBrid;
+        public HomeParrot(string name, DateTime birthYear, string genderOfAnimal, bool isHealthy,
+            bool isVaccinated, bool isAlergicToMedication, DateTime registrationDate, string animalBrid, string disease)
             : base(name, birthYear, genderOfAnimal, isHealthy,
-            isVaccinated, isAlergicToMedication, registrationDate)
+            isVaccinated, isAlergicToMedication, registrationDate, animalBrid)
         {
             this.disease = disease;
+            this.animalBrid = animalBrid;
         }
-        public enum ParrotBrids
+        public override string ToString()
         {
-            Cockatiel,
-            Lovebird,
-            Parrotlet,
-            Caique,
-            Poicephalus,
-            Amazon,
-            Eclectus,
-            Macaw,
-            Cockatoos,
-            Lorie,
-            Parakeet
+            return String.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}",
+                this.AnimalID, this.name, this.genderOfAnimal, this.animalBrid, this.birthYear,
+                this.registrationDate, this.isHealthy, this.disease, this.isVaccinated, this.isVaccinated);
         }
     }
 }
