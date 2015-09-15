@@ -8,7 +8,7 @@ namespace VeterinaryAlina
 {
     public enum MainMenu
     {
-        AboutClinic, PutToClinic, AnimalList, DischargeAnimal, QuitProgram
+        AboutClinic, PutToClinic, AnimalList, DischargeAnimal, MedicalInspection,  QuitProgram
     }
     public class ConsoleHelper
     {
@@ -27,6 +27,7 @@ namespace VeterinaryAlina
             Console.WriteLine("[R] Put new animal in clinic");
             Console.WriteLine("[L] Show list of animals");
             Console.WriteLine("[D] Discharge animal");
+            Console.WriteLine("[M] Medical inspection of animal");
             Console.WriteLine("[Q] Quit");
             do
             {
@@ -38,6 +39,7 @@ namespace VeterinaryAlina
                     case "R": return MainMenu.PutToClinic;
                     case "L": return MainMenu.AnimalList;
                     case "D": return MainMenu.DischargeAnimal;
+                    case "M": return MainMenu.MedicalInspection;
                     case "Q": return MainMenu.QuitProgram;
                     default:
                         break;

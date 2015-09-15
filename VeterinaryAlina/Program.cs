@@ -14,7 +14,7 @@ namespace VeterinaryAlina
             VetClinic myClinic = new VetClinic("Home Animal Clinic");
             do
             {
-                Console.Clear();
+                
                 switch (ConsoleHelper.PrintMenu())
                 {
                     case MainMenu.AboutClinic: myClinic.PrintAboutClinic();
@@ -24,6 +24,8 @@ namespace VeterinaryAlina
                     case MainMenu.AnimalList: myClinic.ShowListOfAnimals();
                         break;
                     case MainMenu.DischargeAnimal: myClinic.DischargeAnimal();
+                        break;
+                    case MainMenu.MedicalInspection: myClinic.MedicalInspection();
                         break;
                     case MainMenu.QuitProgram: isRuning = false;
                         break;

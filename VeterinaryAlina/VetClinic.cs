@@ -10,6 +10,7 @@ namespace VeterinaryAlina
     {
         public string ClinicName { get; private set; }
         List<HomeAnimal> clinic;
+        HomeAnimal animal;
         public VetClinic(string clinicName)
         {
             ClinicName = clinicName;
@@ -35,7 +36,7 @@ namespace VeterinaryAlina
             bool isAlergicToMedication = ConsoleHelper.GetIsAlergicToMedicationForCreateAnimal();
             string disease = ConsoleHelper.GetDisease();
 
-            var animal = AnimalFactory.CreateAnimal(type, name, birthDate, gender, isHelthy,
+            animal = AnimalFactory.CreateAnimal(type, name, birthDate, gender, isHelthy,
                 isVaccinate, isAlergicToMedication, DateTime.Now, brid, disease);
             clinic.Add(animal);
         }
@@ -58,6 +59,11 @@ namespace VeterinaryAlina
         {
             int id = ConsoleHelper.GetInt("Input ID to remove", 1, clinic.Count);
             clinic.RemoveAt(id - 1);
+        }
+        public void MedicalInspection()
+        {
+            int id = ConsoleHelper.GetInt("Input ID to show condition of animal", 1, clinic.Count);
+            animal.ShowConditionOFAnimal(id - 1);
         }
 
     }

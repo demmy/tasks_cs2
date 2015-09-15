@@ -24,5 +24,11 @@ namespace VeterinaryAlina
                 this.AnimalID, this.name, this.genderOfAnimal, this.animalBrid, this.birthYear,
                 this.registrationDate, this.isHealthy, this.disease, this.isVaccinated, this.isVaccinated);
         }
+        public override void ShowConditionOFAnimal(int id)
+        {
+            base.ShowConditionOFAnimal(id);
+            Console.WriteLine("Say meow");
+            Console.WriteLine("Wag the tail");
+        }
     }
 }

@@ -51,5 +51,18 @@ namespace VeterinaryAlina
         {
             return ++uniqueCode;
         }
+        public virtual void ShowConditionOFAnimal(int id)
+        {
+            Console.WriteLine("Name of this animal is: {0}", name);
+            Console.WriteLine("Gender of this animal is: {0}", genderOfAnimal);
+            if (isHealthy)
+            {
+                Console.WriteLine("Animal is healthy");
+            }
+            else
+            {
+                Console.WriteLine("Animal is sick");
+            }
+        }
     }
 }
