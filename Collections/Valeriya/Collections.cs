@@ -93,7 +93,7 @@ namespace Collections.Valeriya
 
             for (int i = 0; i < sumsFromSensors.Count; i++)
             {
-                sensorsAverage.Add(new OutData(codesOfSensors[i], sumsFromSensors[i] / countOfValuesFromEachSensor[i]));
+                //sensorsAverage.Add(new OutData(codesOfSensors[i], sumsFromSensors[i] / countOfValuesFromEachSensor[i]));
             }
 
             return sensorsAverage;

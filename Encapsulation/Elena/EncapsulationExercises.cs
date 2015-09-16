@@ -11,7 +11,7 @@ namespace Encapsulation.Elena
         public void MoneyMoney()
         {
             Money m1 = new Money();
-            Money m2 = new Money(25, 51);
+            Money m2 = new Money(25,51);
             Money m3 = new Money(768);
 
             int hrivnas = m1.Hrivnas;
@@ -36,7 +36,7 @@ namespace Encapsulation.Elena
 
         }
 
-
+ 
         public void WorkPriorityQueue()
         {
             Queue<string> q = new Queue<string>();
