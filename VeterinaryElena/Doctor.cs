@@ -8,10 +8,10 @@ namespace VeterinaryElena
 {
     public class Doctor
     {
-        public string name;
-        public string qualification;
-        public int id;
-        public int workStage;
+         string name;
+         string qualification;
+         int id;
+         int workStage;
 
 
 
@@ -22,5 +22,16 @@ namespace VeterinaryElena
             id = i;
             workStage = wS;
         }
+
+       public string Name
+       { get { return name; } }
+
+       public string Qualification
+       { get { return qualification; } }
+       
+       public int WorkStage
+       { get { return workStage; } }
+
+
     }
 }

@@ -6,16 +6,32 @@ using System.Threading.Tasks;
 
 namespace VeterinaryElena
 {
-    class HomeAnimals
+   abstract  class HomeAnimal
     {
-        protected int id;
-        protected string name;
-        protected int doctor;
-        protected int age;
-        protected bool isHealthy;
-        protected int ageAverage;
-        protected string kindOfAnimal;
-        protected string owner;
+        int id;
+        string name;
+        int doctor;
+        int age;
+        bool isHealthy;
+        int ageAverage;
+        string kindOfAnimal;
+        string owner;
+
+
+        public HomeAnimal(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
+                            bool isHealthyAnimal, string ownerOfAnimal, int averageOfAnimal, string kindAnimal)
+        {
+            name = nameOfAnimal;
+            id = idOfAnimal;
+            doctor = doctorOfAnimal;
+            age =ageOfAnimal ;
+            isHealthy = isHealthyAnimal;
+            ageAverage = averageOfAnimal;
+            kindOfAnimal = kindAnimal;
+            owner = ownerOfAnimal;
+        }
+        abstract public void ExaminationReaction();
+
 
        public string KindOfAnimal
        {
@@ -38,120 +54,73 @@ namespace VeterinaryElena
        { get { return owner; } }
 
        public bool IsHealthy
-       { get { return isHealthy; } }
-       /*public string Doctor
        {
-           get
-           {
-                foreach(Doctor d in personal)
-           }
-       }*/
-        public List<HomeAnimals> animals = new List<HomeAnimals>();
+           get { return isHealthy; } 
+           set {isHealthy=value;}
+       }
 
-        protected HomeAnimals ReturnPets(int identificator)
+
+      
+    }
+
+    class HomeDog : HomeAnimal
+    {
+        public override void ExaminationReaction()
         {
-            foreach (HomeAnimals ha in animals)
-            {
-                if (ha.id == identificator)
-                {return ha;}
-            }
-
-            throw new InvalidOperationException();
+            Console.WriteLine("Dog is siting");
         }
-
-        public void DischargeAnimal(int identificator)
+        public HomeDog(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
+                            bool isHealthyAnimal, string ownerOfAnimal )
+            :base(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal,isHealthyAnimal, ownerOfAnimal,10,"dog" )
         {
-            try
-            {
-                ReturnPets(identificator).isHealthy = true; ;
-            }
-
-            catch(InvalidOperationException)
-            {
-
-            }
-            
+          
         }
+        
+    }
 
-        public void Readmission(int identificator)
+    class HomeHamster : HomeAnimal
+    {
+        public override void ExaminationReaction()
         {
-            ReturnPets(identificator).isHealthy = false;
+            Console.WriteLine("Hamster is runing!Catch it!");
         }
-
-        public int isConteins(string nameA, string ownerA, string kindA)
+    public HomeHamster(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal, 
+                            bool isHealthyAnimal, string ownerOfAnimal )
+            : base(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal, 2, "humster")
         {
-            int number = 0;
-            foreach (HomeAnimals ha in animals)
-            {
-                if (ha.name == nameA && ha.owner == ownerA && ha.kindOfAnimal == kindA)
-                { number = ha.id; }
-            }
 
-            return number;
         }
     }
 
-    class HomeDog : HomeAnimals
+    class HomeCat : HomeAnimal
     {
-        public HomeDog(string n, int d, int a, bool iH, string o)
+        public override void ExaminationReaction()
         {
-            name = n;
-            id = animals.Count + 1;
-            doctor = d;
-            age = a;
-            isHealthy = iH;
-            ageAverage = 10;
-            kindOfAnimal = "dog";
-            owner = o;
+            Console.WriteLine("Cat is bitting");
         }
-    }
 
-    class HomeHamster : HomeAnimals
-    {
-        public HomeHamster(string n, int d, int a, bool iH, string o)
+ public HomeCat(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
+                            bool isHealthyAnimal, string ownerOfAnimal )
+            : base(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal, 10, "cat")
         {
-            name = n;
-            id = animals.Count + 1;
-            doctor = d;
-            age = a;
-            isHealthy = iH;
-            ageAverage = 2;
-            kindOfAnimal = "hamster";
-            owner = o;
-        }
-    }
-
-    class HomeCat : HomeAnimals
-    {
-        public HomeCat(string n, int d, int a, bool iH, string o)
-        {
-           
-                name = n;
-                id = animals.Count + 1;
-                doctor = d;
-                age = a;
-                isHealthy = iH;
-                ageAverage = 15;
-                kindOfAnimal = "cat";
-                owner = o;
             
         }
     }
 
-    class HomeFish : HomeAnimals
+    class HomeFish : HomeAnimal
     {
-        bool ispredatory;
-        public HomeFish(string n, int d, int a, bool iH, string o, bool predatory)
+      //  bool ispredatory;
+
+        public override void ExaminationReaction()
         {
-            name = n;
-            id =animals.Count + 1;
-            doctor = d;
-            age = a;
-            isHealthy = iH;
-            ageAverage = 1;
-            kindOfAnimal = "fish";
-            owner = o;
-            ispredatory = predatory;
+            Console.WriteLine("Fish is swiming");
+        }
+ public HomeFish(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
+                            bool isHealthyAnimal, string ownerOfAnimal )
+            : base(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal, 5, "fish")
+        {
+
         }
     }
 }
+    

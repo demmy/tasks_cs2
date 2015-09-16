@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Doctor.cs" />
     <Compile Include="HomeAnimals.cs" />
+    <Compile Include="ManagementClinic.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
