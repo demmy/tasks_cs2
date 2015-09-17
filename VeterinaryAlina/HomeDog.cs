@@ -22,7 +22,7 @@ namespace VeterinaryAlina
         {
             return String.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}",
                 this.AnimalID, Name, GenderOfAnimal, this.animalBrid, BirthYear,
-                this.registrationDate, IsHealthy, this.disease, IsVaccinated, IsVaccinated);
+                this.RegistrationDate, IsHealthy, this.disease, IsVaccinated, IsVaccinated);
         }
         public override void ShowConditionOFAnimal(int id)
         {

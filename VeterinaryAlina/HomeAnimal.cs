@@ -29,7 +29,7 @@ namespace VeterinaryAlina
             {AnimalType.Parrot, new List<string>{"Cockatiel", "Lovebird", "Parrotlet",
                 "Caique", "Poicephalus", "Amazon", "Eclectus", "Macaw", "Cockatoos", "Lorie"}}
         };
-        protected DateTime registrationDate;
+        public DateTime RegistrationDate { get; protected set; }
         public HomeAnimal()
         {
 
@@ -44,7 +44,7 @@ namespace VeterinaryAlina
             IsHealthy = isHealthy;
             IsVaccinated = isVaccinated;
             IsAlergicToMedication = isAlergicToMedication;
-            this.registrationDate = registrationDate;
+            RegistrationDate = registrationDate;
             AnimalID = GetFreeCode();
         }
         public static  int GetFreeCode()
