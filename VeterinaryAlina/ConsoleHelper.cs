@@ -10,8 +10,21 @@ namespace VeterinaryAlina
     {
         AboutClinic, PutToClinic, AnimalList, DischargeAnimal, MedicalInspection,  QuitProgram
     }
+
     public class ConsoleHelper
     {
+        static List<string> animalType = new List<string>() { "Home cat", "Home dog", "Home fish",
+            "Home hamster", "Home parrot" };
+        static List<string> catBrids = new List<string>() { "Balinese", "Bengal", "Birman",
+            "Bombay", "Burmese", "Chartreux", "Cymric", "Himalayan", "Javanese", "MaineCoon"};
+        static List<string> dogBrids = new List<string>() { "Affenpinscher", "Akita", "Basenji",
+            "Beagl", "Bloodhound", "Dalmatian", "Greyhound", "Harrier", "Keeshond", "Kuvasz"};
+        static List<string> fishBrids = new List<string>() { "Angelfish", "Barb", "Betta",
+            "Catfish", "Cichlid", "Cory", "Danio", "Discus", "Firemouth", "Goldfish"};
+        static List<string> hamsterBrids = new List<string>() { "Syrian", "Roborovski", "Chinese",
+            "WinterWhite", "Campbell"};
+        static List<string> parrotBrids = new List<string>() { "[1] Cockatiel", "[2] Lovebird", "[3] Parrotle",
+            "[4] Caique", "[5] Poicephalus", "[6] Amazon", "[7] Eclectus", "[8] Macaw", "[9] Cockatoos", "[10] Lorie"};
         public static int GetInt(string message, int minValue, int maxValue)
         {
             int result = int.MinValue;
@@ -46,13 +59,19 @@ namespace VeterinaryAlina
                 }
             } while (true);
         }
+        public static void PrintList(List<string> list)
+        {
+            int count = 1;
+            Console.Clear();
+            foreach (string element in list)
+            {
+                Console.WriteLine("[{0}] - {1}", count, element);
+                count++;
+            }
+        }
         public static AnimalType PrintAnimalType()
         {
-            Console.WriteLine("[1] Home cat");
-            Console.WriteLine("[2] Home dog");
-            Console.WriteLine("[3] Home fish");
-            Console.WriteLine("[4] Home hamster");
-            Console.WriteLine("[5] Home parrot");
+            PrintList(animalType);
             do
             {
                 Console.WriteLine("Please, select type of animal. Enter the relevant number");
@@ -69,23 +88,14 @@ namespace VeterinaryAlina
                 }
 
             } while (true);
-
         }
+
         public static string PrintAnimalBrids(AnimalType type)
         {
             switch (type)
             {
                 case AnimalType.Cat:
-                    Console.WriteLine("[1] Balinese");
-                    Console.WriteLine("[2] Bengal");
-                    Console.WriteLine("[3] Birman");
-                    Console.WriteLine("[4] Bombay");
-                    Console.WriteLine("[5] Burmese");
-                    Console.WriteLine("[6] Chartreux");
-                    Console.WriteLine("[7] Cymric");
-                    Console.WriteLine("[8] Himalayan");
-                    Console.WriteLine("[9] Javanese");
-                    Console.WriteLine("[10] MaineCoon");
+                    PrintList(catBrids);
                     do
                     {
                         Console.WriteLine("Please, select brid of cat. Enter the relevant number");
@@ -107,16 +117,7 @@ namespace VeterinaryAlina
                         }
                     } while (true);
                 case AnimalType.Dog:
-                    Console.WriteLine("[1] Affenpinscher");
-                    Console.WriteLine("[2] Akita");
-                    Console.WriteLine("[3] Basenji");
-                    Console.WriteLine("[4] Beagl");
-                    Console.WriteLine("[5] Bloodhound");
-                    Console.WriteLine("[6] Dalmatian");
-                    Console.WriteLine("[7] Greyhound");
-                    Console.WriteLine("[8] Harrier");
-                    Console.WriteLine("[9] Keeshond");
-                    Console.WriteLine("[10] Kuvasz");
+                    PrintList(dogBrids);
                     do
                     {
                         Console.WriteLine("Please, select brid of dog. Enter the relevant number");
@@ -138,16 +139,7 @@ namespace VeterinaryAlina
                         }
                     } while (true);
                 case AnimalType.Fish:
-                    Console.WriteLine("[1] Angelfish");
-                    Console.WriteLine("[2] Barb");
-                    Console.WriteLine("[3] Betta");
-                    Console.WriteLine("[4] Catfish");
-                    Console.WriteLine("[5] Cichlid");
-                    Console.WriteLine("[6] Cory");
-                    Console.WriteLine("[7] Danio");
-                    Console.WriteLine("[8] Discus");
-                    Console.WriteLine("[9] Firemouth");
-                    Console.WriteLine("[10] Goldfish");
+                    PrintList(fishBrids);
                     do
                     {
                         Console.WriteLine("Please, select brid of fisf. Enter the relevant number");
@@ -169,11 +161,7 @@ namespace VeterinaryAlina
                         }
                     } while (true);
                 case AnimalType.Hamster:
-                    Console.WriteLine("[1] Syrian");
-                    Console.WriteLine("[2] Roborovski");
-                    Console.WriteLine("[3] Chinese");
-                    Console.WriteLine("[4] WinterWhite");
-                    Console.WriteLine("[5] Campbell");
+                    PrintList(hamsterBrids);
                     do
                     {
                         Console.WriteLine("Please, select brid of fisf. Enter the relevant number");
@@ -190,16 +178,7 @@ namespace VeterinaryAlina
                         }
                     } while (true);
                 case AnimalType.Parrot:
-                    Console.WriteLine("[1] Cockatiel");
-                    Console.WriteLine("[2] Lovebird");
-                    Console.WriteLine("[3] Parrotle");
-                    Console.WriteLine("[4] Caique");
-                    Console.WriteLine("[5] Poicephalus");
-                    Console.WriteLine("[6] Amazon");
-                    Console.WriteLine("[7] Eclectus");
-                    Console.WriteLine("[8] Macaw");
-                    Console.WriteLine("[9] Cockatoos");
-                    Console.WriteLine("[10] Lorie");
+                    PrintList(parrotBrids);
                     do
                     {
                         Console.WriteLine("Please, select brid of fisf. Enter the relevant number");
