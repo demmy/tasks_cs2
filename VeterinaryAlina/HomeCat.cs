@@ -21,8 +21,8 @@ namespace VeterinaryAlina
         public override string ToString()
         {
             return String.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}",
-                this.AnimalID, this.name, this.genderOfAnimal, this.animalBrid, this.birthYear,
-                this.registrationDate, this.isHealthy, this.disease, this.isVaccinated, this.isVaccinated);
+                this.AnimalID, Name, GenderOfAnimal, this.animalBrid, BirthYear,
+                this.registrationDate, IsHealthy, this.disease, IsVaccinated, IsVaccinated);
         }
         public override void ShowConditionOFAnimal(int id)
         {

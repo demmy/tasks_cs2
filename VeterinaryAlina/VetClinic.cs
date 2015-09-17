@@ -9,7 +9,7 @@ namespace VeterinaryAlina
     public class VetClinic
     {
         public string ClinicName { get; private set; }
-        List<HomeAnimal> clinic;
+        List<HomeAnimal> clinic = new List<HomeAnimal>();
         HomeAnimal animal;
         public VetClinic(string clinicName)
         {

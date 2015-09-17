@@ -17,17 +17,23 @@ namespace VeterinaryAlina
                 
                 switch (ConsoleHelper.PrintMenu())
                 {
-                    case MainMenu.AboutClinic: myClinic.PrintAboutClinic();
+                    case MainMenu.AboutClinic:
+                        myClinic.PrintAboutClinic();
                         break;
-                    case MainMenu.PutToClinic: myClinic.PutAnimalToClinic();
+                    case MainMenu.PutToClinic:
+                        myClinic.PutAnimalToClinic();
                         break;
-                    case MainMenu.AnimalList: myClinic.ShowListOfAnimals();
+                    case MainMenu.AnimalList:
+                        myClinic.ShowListOfAnimals();
                         break;
-                    case MainMenu.DischargeAnimal: myClinic.DischargeAnimal();
+                    case MainMenu.DischargeAnimal:
+                        myClinic.DischargeAnimal();
                         break;
-                    case MainMenu.MedicalInspection: myClinic.MedicalInspection();
+                    case MainMenu.MedicalInspection:
+                        myClinic.MedicalInspection();
                         break;
-                    case MainMenu.QuitProgram: isRuning = false;
+                    case MainMenu.QuitProgram:
+                        isRuning = false;
                         break;
                     default:
                         break;

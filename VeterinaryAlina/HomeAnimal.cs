@@ -8,12 +8,12 @@ namespace VeterinaryAlina
 {
     public abstract class HomeAnimal
     {
-        protected string name;
-        protected DateTime birthYear;
-        protected string genderOfAnimal;
-        protected bool isHealthy;
-        protected bool isVaccinated;
-        protected bool isAlergicToMedication;
+        public string Name { get; protected set; }
+        public DateTime BirthYear { get; protected set; }
+        public string GenderOfAnimal { get; protected set; }
+        public bool IsHealthy { get; protected set; }
+        public bool IsVaccinated { get; protected set; }
+        public bool IsAlergicToMedication { get; protected set; }
         static int uniqueCode=0;
         public int AnimalID { get; protected set; }
         public static Dictionary<AnimalType, List<string>> animalBrids = new Dictionary<AnimalType, List<string>>() 
@@ -38,14 +38,14 @@ namespace VeterinaryAlina
             (string name, DateTime birthYear, string genderOfAnimal, bool isHealthy, bool isVaccinated,
             bool isAlergicToMedication, DateTime registrationDate, string animalBris)
         {
-            this.name = name;
-            this.birthYear = birthYear;
-            this.genderOfAnimal = genderOfAnimal;
-            this.isHealthy = isHealthy;
-            this.isVaccinated = isVaccinated;
-            this.isAlergicToMedication = isAlergicToMedication;
+            Name = name;
+            BirthYear = birthYear;
+            GenderOfAnimal = genderOfAnimal;
+            IsHealthy = isHealthy;
+            IsVaccinated = isVaccinated;
+            IsAlergicToMedication = isAlergicToMedication;
             this.registrationDate = registrationDate;
-            this.AnimalID = GetFreeCode();
+            AnimalID = GetFreeCode();
         }
         public static  int GetFreeCode()
         {
@@ -53,16 +53,9 @@ namespace VeterinaryAlina
         }
         public virtual void ShowConditionOFAnimal(int id)
         {
-            Console.WriteLine("Name of this animal is: {0}", name);
-            Console.WriteLine("Gender of this animal is: {0}", genderOfAnimal);
-            if (isHealthy)
-            {
-                Console.WriteLine("Animal is healthy");
-            }
-            else
-            {
-                Console.WriteLine("Animal is sick");
-            }
+            Console.WriteLine("Name of this animal is: {0}", Name);
+            Console.WriteLine("Gender of this animal is: {0}", GenderOfAnimal);
+            Console.WriteLine(IsHealthy ? "Animal is healthy" : "Animal is sick");
         }
     }
 }
