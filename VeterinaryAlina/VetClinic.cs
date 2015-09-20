@@ -23,10 +23,13 @@ namespace VeterinaryAlina
                               "our patients with the most knowledgeable and up-to-date care possible,\n" +
                               "while offering our clients the best customer service available.\n" +
                               "We feel that clients will want to return to our practice, with that as our primary goal.");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
         public void PutAnimalToClinic()
         {
-            AnimalType type = ConsoleHelper.PrintAnimalType();
+            ConsoleHelper.PrintMyMenu(ConsoleHelper.anymalType);
+            string type = ConsoleHelper.GetMenuItem(ConsoleHelper.anymalType);
             string brid = ConsoleHelper.PrintAnimalBrids(type);
             string name = ConsoleHelper.GetNameForCreateAnimal();
             string gender = ConsoleHelper.GetgenderOfAnimalForCreateAnimal();
@@ -62,8 +65,17 @@ namespace VeterinaryAlina
         }
         public void MedicalInspection()
         {
-            int id = ConsoleHelper.GetInt("Input ID to show condition of animal", 1, clinic.Count);
-            animal.ShowConditionOFAnimal(id - 1);
+            if (clinic.Count != 0)
+            {
+                int id = ConsoleHelper.GetInt("Input ID to show condition of animal", 1, clinic.Count);
+                animal.ShowConditionOFAnimal(id); 
+            }
+            else
+            {
+                Console.WriteLine("Clinic is empty");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+            }
         }
 
     }

@@ -14,25 +14,25 @@ namespace VeterinaryAlina
             VetClinic myClinic = new VetClinic("Home Animal Clinic");
             do
             {
-                
-                switch (ConsoleHelper.PrintMenu())
+                ConsoleHelper.PrintMyMenu(ConsoleHelper.menuItems);
+                switch (ConsoleHelper.GetMenuItem(ConsoleHelper.menuItems))
                 {
-                    case MainMenu.AboutClinic:
+                    case "About company":
                         myClinic.PrintAboutClinic();
                         break;
-                    case MainMenu.PutToClinic:
+                    case "Put new animal in clinic":
                         myClinic.PutAnimalToClinic();
                         break;
-                    case MainMenu.AnimalList:
+                    case "Show list of animals":
                         myClinic.ShowListOfAnimals();
                         break;
-                    case MainMenu.DischargeAnimal:
+                    case "Discharge animal":
                         myClinic.DischargeAnimal();
                         break;
-                    case MainMenu.MedicalInspection:
+                    case "Medical inspection of animal":
                         myClinic.MedicalInspection();
                         break;
-                    case MainMenu.QuitProgram:
+                    case "Quit":
                         isRuning = false;
                         break;
                     default:

@@ -6,35 +6,32 @@ using System.Threading.Tasks;
 
 namespace VeterinaryAlina
 {
-    public enum AnimalType 
-    {
-        Cat, Dog, Fish, Hamster, Parrot
-    }
+
     static class AnimalFactory
     {
-        public static HomeAnimal CreateAnimal(AnimalType type, string name, DateTime birthYear, string genderOfAnimal, bool isHealthy,
+        public static HomeAnimal CreateAnimal(string type, string name, DateTime birthYear, string genderOfAnimal, bool isHealthy,
             bool isVaccinated, bool isAlergicToMedication, DateTime registrationDate, string animalBrid, string disease)
         {
             HomeAnimal newAnimal;
             switch (type)
             {
-                case AnimalType.Cat: 
+                case "Cat":
                     newAnimal = new HomeCat(name, birthYear, genderOfAnimal, isHealthy, isVaccinated,
                     isAlergicToMedication, registrationDate, animalBrid, disease);
                     break;
-                case AnimalType.Dog:
+                case "Dog":
                     newAnimal = new HomeDog(name, birthYear, genderOfAnimal, isHealthy, isVaccinated,
                     isAlergicToMedication, registrationDate, animalBrid, disease);
                     break;
-                case AnimalType.Fish:
+                case "Fish":
                     newAnimal = new HomeFish(name, birthYear, genderOfAnimal, isHealthy, isVaccinated,
                     isAlergicToMedication, registrationDate, animalBrid, disease);
                     break;
-                case AnimalType.Hamster:
+                case "Hamster":
                     newAnimal = new HomeHamster(name, birthYear, genderOfAnimal, isHealthy, isVaccinated,
                     isAlergicToMedication, registrationDate, animalBrid, disease);
                     break;
-                case AnimalType.Parrot:
+                case "Parrot":
                     newAnimal = new HomeParrot(name, birthYear, genderOfAnimal, isHealthy, isVaccinated,
                     isAlergicToMedication, registrationDate, animalBrid, disease);
                     break;
