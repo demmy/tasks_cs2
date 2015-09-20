@@ -6,13 +6,23 @@ using System.Threading.Tasks;
 
 namespace VeterinaryElena
 {
+  
     class Menu
     {
+      
         public struct ItemAction
         {
             public  int?  Code;
+            public string shortName;
             public string text;
             public Action MyAction;
+        }
+
+        public struct ItemCode
+        {
+            public int? Code;
+            public string Description;
+            public string shortName;
         }
 
         private ItemAction[] items;
@@ -23,6 +33,12 @@ namespace VeterinaryElena
             items.CopyTo(this.items, 0);
         }
 
+        public Menu(ItemCode[] itemsCode)
+        {
+            this.items = Array.ConvertAll(
+                itemsCode, new Converter<ItemCode, ItemAction>((ic) => { return new ItemAction { Code = ic.Code, shortName=ic.shortName, text = ic.Description, MyAction = null }; }));
+
+        }
         public void Show()
         {
             Action currentAction = null;
@@ -43,20 +59,28 @@ namespace VeterinaryElena
             bool areCodesAvailable = Array.TrueForAll(this.items, (item) => { return item.Code.HasValue; });
             for (int index = 0; index < items.Length; index++)
             {
-                Console.WriteLine("[{0}] {1}", areCodesAvailable?items[index].Code:index+1, items[index].text);
+                Console.WriteLine("[{0}] {1}", items[index].shortName, items[index].text);
             }
         }
 
             private int GetCorrectUserInput()
             {
- 	            string input;
-                int number;
+ 	           // string input;
+                string inpMenu;
+                int number=0;
                 do
                 {
                     Console.WriteLine("Enter your code");
-                    input=Console.ReadLine();
+                    inpMenu=Console.ReadLine();
+                    foreach (ItemAction a in items)
+                    {
+                        if (a.shortName == inpMenu.ToUpper())
+                        { number = (int)a.Code; }
+                    }
+                    
                 }
-                while(!(int.TryParse(input, out number)&&ValidateInput(number, items.Length)));
+                while(inpMenu=="L"||inpMenu=="Q"||inpMenu=="H"||inpMenu=="E"||inpMenu=="D");
+                //while(!(int.TryParse(input, out number)&&ValidateInput(number, items.Length)));
                 return number;
             }
 
@@ -74,6 +98,12 @@ namespace VeterinaryElena
                     result = choice > 0 && choice <= maxValue;
                 }
                 return result;
+            }
+
+            public int GetChoice()
+            {
+                PrintMenu();
+                return GetCorrectUserInput();
             }
         }
     }

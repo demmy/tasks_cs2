@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace VeterinaryElena
 {
-   abstract  class HomeAnimal
+
+
+   public abstract class HomeAnimal
     {
         int id;
         string name;
@@ -17,6 +19,33 @@ namespace VeterinaryElena
         string kindOfAnimal;
         string owner;
 
+        abstract public void ExaminationReaction();
+      
+        public string KindOfAnimal
+        {
+            get { return this.kindOfAnimal; }
+        }
+
+        public string Name
+        { get { return name; } }
+
+
+        public int AgeAverage
+        { get { return ageAverage; } }
+
+
+        public int ID
+        { get { return id; } }
+
+
+        public string Owner
+        { get { return owner; } }
+
+        public bool IsHealthy
+        {
+            get { return isHealthy; }
+            set { isHealthy = value; }
+        }
 
         public HomeAnimal(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
                             bool isHealthyAnimal, string ownerOfAnimal, int averageOfAnimal, string kindAnimal)
@@ -24,47 +53,63 @@ namespace VeterinaryElena
             name = nameOfAnimal;
             id = idOfAnimal;
             doctor = doctorOfAnimal;
-            age =ageOfAnimal ;
+            age = ageOfAnimal;
             isHealthy = isHealthyAnimal;
             ageAverage = averageOfAnimal;
             kindOfAnimal = kindAnimal;
             owner = ownerOfAnimal;
         }
-        abstract public void ExaminationReaction();
 
-
-       public string KindOfAnimal
-       {
-        get{return this.kindOfAnimal;}
-       }
-
-       public string Name
-       { get { return name; } }
-
-
-       public int AgeAverage
-       { get { return ageAverage; } }
-
-
-       public int ID
-       { get { return id; } }
-
-
-       public string Owner
-       { get { return owner; } }
-
-       public bool IsHealthy
-       {
-           get { return isHealthy; } 
-           set {isHealthy=value;}
-       }
-
-
-      
     }
+
+    public interface ICreatorAnimal
+    {
+        HomeAnimal FactoryCreatorAnimal(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
+                             bool isHealthyAnimal, string ownerOfAnimal);
+    }
+
+    public class CreatorCat:ICreatorAnimal
+    {
+
+
+        public HomeAnimal FactoryCreatorAnimal(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
+                            bool isHealthyAnimal, string ownerOfAnimal)
+        {
+            return new HomeCat(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal);
+        }
+    }
+
+    public class CreatorDog : ICreatorAnimal
+    {
+        public HomeAnimal FactoryCreatorAnimal(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
+                            bool isHealthyAnimal, string ownerOfAnimal)
+        {
+            return new HomeDog(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal);
+        }
+    }
+
+    public class CreatorHamster : ICreatorAnimal
+    {
+        public HomeAnimal FactoryCreatorAnimal(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
+                            bool isHealthyAnimal, string ownerOfAnimal)
+        {
+            return new HomeHamster(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal);
+        }
+    }
+
+    public class CreatorFish : ICreatorAnimal
+    {
+        public HomeAnimal FactoryCreatorAnimal(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
+                            bool isHealthyAnimal, string ownerOfAnimal)
+        {
+            return new HomeFish(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal);
+        }
+    }
+
 
     class HomeDog : HomeAnimal
     {
+       
         public override void ExaminationReaction()
         {
             Console.WriteLine("Dog is siting");
@@ -72,14 +117,13 @@ namespace VeterinaryElena
         public HomeDog(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
                             bool isHealthyAnimal, string ownerOfAnimal )
             :base(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal,isHealthyAnimal, ownerOfAnimal,10,"dog" )
-        {
-          
-        }
-        
+        {      }
+
     }
 
     class HomeHamster : HomeAnimal
     {
+        
         public override void ExaminationReaction()
         {
             Console.WriteLine("Hamster is runing!Catch it!");
@@ -87,13 +131,14 @@ namespace VeterinaryElena
     public HomeHamster(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal, 
                             bool isHealthyAnimal, string ownerOfAnimal )
             : base(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal, 2, "humster")
-        {
+        {}
 
-        }
     }
 
     class HomeCat : HomeAnimal
     {
+       
+
         public override void ExaminationReaction()
         {
             Console.WriteLine("Cat is bitting");
@@ -101,15 +146,13 @@ namespace VeterinaryElena
 
  public HomeCat(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
                             bool isHealthyAnimal, string ownerOfAnimal )
-            : base(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal, 10, "cat")
-        {
-            
-        }
+           : base(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal, 10, "cat")
+        { }
+
     }
 
     class HomeFish : HomeAnimal
     {
-      //  bool ispredatory;
 
         public override void ExaminationReaction()
         {
@@ -118,9 +161,9 @@ namespace VeterinaryElena
  public HomeFish(string nameOfAnimal, int idOfAnimal, int ageOfAnimal, int doctorOfAnimal,
                             bool isHealthyAnimal, string ownerOfAnimal )
             : base(nameOfAnimal, idOfAnimal, ageOfAnimal, doctorOfAnimal, isHealthyAnimal, ownerOfAnimal, 5, "fish")
-        {
+        {      }
 
-        }
+
     }
 }
     

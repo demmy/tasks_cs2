@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace VeterinaryElena
 {
-    class ManagementClinic
+   public class ManagementClinic
     {
-        public List<HomeAnimal> animals = new List<HomeAnimal>();
-
         public void DischargeAnimal(int identificator)
         {
-            foreach (HomeAnimal a in animals)
+            foreach (HomeAnimal a in Program.animals)
             {
                 if (a.ID == identificator)
                 { a.IsHealthy = true; }
@@ -22,7 +20,7 @@ namespace VeterinaryElena
 
         public void Readmission(int identificator)
         {
-            foreach (HomeAnimal a in animals)
+            foreach (HomeAnimal a in Program.animals)
             {
                 if (a.ID == identificator)
                 { a.IsHealthy = false; }
@@ -31,7 +29,7 @@ namespace VeterinaryElena
 
         protected HomeAnimal ReturnPets(int identificator)
         {
-            foreach (HomeAnimal ha in animals)
+            foreach (HomeAnimal ha in Program.animals)
             {
                 if (ha.ID == identificator)
                 { return ha; }
@@ -41,9 +39,10 @@ namespace VeterinaryElena
         }
 
         public int isConteins(string nameA, string ownerA, string kindA)
+        
         {
             int number = 0;
-            foreach (HomeAnimal ha in animals)
+            foreach (HomeAnimal ha in Program.animals)
             {
                 if (ha.Name == nameA && ha.Owner == ownerA && ha.KindOfAnimal == kindA)
                 { number = ha.ID; }
