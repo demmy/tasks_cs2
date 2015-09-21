@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace VeterinaryVladimir
 {
-    public class HomeAnimal
+    public abstract class HomeAnimal
     {
-            public string nameAnimal;
-            public int legs;
-            public int yearBirthDay;
+            private string nameAnimal;
+            private int yearBirthDay;
 
             public HomeAnimal()
                 : this("", 1900)
@@ -23,18 +22,8 @@ namespace VeterinaryVladimir
                 this.yearBirthDay = yearBirthDay;   
             }
 
-            public HomeAnimal(int legs)
-            {
-                this.legs = legs;
-            }
-        
-            public HomeAnimal Eat { get; set; }
-
-            public HomeAnimal Sleep { get; set; }
-
-
-
-
-
+           
+            public abstract bool ExaminationReaction();
+            
     }
 }

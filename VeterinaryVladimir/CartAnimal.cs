@@ -13,9 +13,9 @@ namespace VeterinaryVladimir
         public DateTime inDate;
         public DateTime outDate;
 
-        public override string ToString()
-        {
-            return String.Format("{0} {1} {2} {3}",animal.nameAnimal, isHealth, inDate, outDate);
-        }
+        //public override string ToString()
+        //{
+        //    return String.Format("{0} {1} {2} {3}",animal.nameAnimal, isHealth, inDate, outDate);
+        //}
     }
 }

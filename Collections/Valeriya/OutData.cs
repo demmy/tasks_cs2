@@ -12,8 +12,8 @@ namespace Collections.Valeriya
         public double Average { get; }
         public OutData (int code, double average)
         {
-            this.Code = code;
-            this.Average = average;
+            //this.Code = code;
+            //this.Average = average;
         }
     }
 }

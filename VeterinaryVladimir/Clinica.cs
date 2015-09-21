@@ -8,7 +8,7 @@ namespace VeterinaryVladimir
 {
     class Clinica 
     {
-        private List<CartAnimal> animals;
+        public List<CartAnimal> animals;
 
         public Clinica()
         {
@@ -32,11 +32,12 @@ namespace VeterinaryVladimir
             cart.outDate = DateTime.Now;
         }
 
-        public List<CartAnimal> getAnimals()
-        {
-            return animals;
-        }
-
+        public List<CartAnimal> getAnimals { get { return animals; } }
         
+        
+        //public List<CartAnimal> getAnimals()
+        //{
+        //    return animals;
+        //}
     }
 }

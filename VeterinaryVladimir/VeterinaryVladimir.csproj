@@ -48,6 +48,7 @@
     <Compile Include="HomeDog.cs" />
     <Compile Include="HomeFish.cs" />
     <Compile Include="HomeHamster.cs" />
+    <Compile Include="MenuClinica.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

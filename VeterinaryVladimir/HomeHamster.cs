@@ -8,11 +8,16 @@ namespace VeterinaryVladimir
 {
     public class HomeHamster : HomeAnimal
     {
-        public HomeHamster RunInCircke {get; set;}
+        
         
         public HomeHamster(string nameAnimal, int yearBirthDay) : base (nameAnimal, yearBirthDay)
         {
            
+        }
+
+        public override bool ExaminationReaction()
+        {
+            return true;
         }
 
     }

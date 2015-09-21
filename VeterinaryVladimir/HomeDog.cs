@@ -18,16 +18,15 @@ namespace VeterinaryVladimir
             throw new NotImplementedException();
         }
 
-        public HomeCat Legs(int legs = 4)
-        {
-            throw new NotImplementedException();
-        }
-
         public HomeDog(string nameAnimal, int yearBirthDay) : base (nameAnimal, yearBirthDay)
         {
            
         }
-    
+
+        public override bool ExaminationReaction()
+        {
+            return false;
+        }
 
     }
 }

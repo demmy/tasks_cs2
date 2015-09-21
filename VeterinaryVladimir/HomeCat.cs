@@ -8,20 +8,24 @@ namespace VeterinaryVladimir
 {
     public class HomeCat : HomeAnimal
     {
+        //private string nameAnimal;
+        //private int yearBirthDay;
+
         private void RunAfter(HomeHamster hamster)
         {
            throw new NotImplementedException();
         }
 
-        private HomeCat Legs(int legs=4)
-        {
-            throw new NotImplementedException();
-        }
-        
+         
         public HomeCat(string nameAnimal, int yearBirthDay) : base (nameAnimal, yearBirthDay)
         {
            
         }
-    
+
+        public override bool ExaminationReaction()
+        {
+            return false;
+        }
+
     }
 }
