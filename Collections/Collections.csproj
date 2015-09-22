@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alina\Collections.cs" />
+    <Compile Include="Alina\SimpleNumber.cs" />
+    <Compile Include="Alina\SNSequence.cs" />
     <Compile Include="Andrey\Collections.cs" />
     <Compile Include="Elena\Collections.cs" />
     <Compile Include="ICollections.cs" />
