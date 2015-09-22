@@ -110,7 +110,7 @@ namespace Collections.Konstantin
 
         public ISimpleNumbers GetSimpleNumbersInstance(int limit)
         {
-            throw new NotImplementedException();
+            return new PrimeNumbers(limit);
         }
     }
 }
