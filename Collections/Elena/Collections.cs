@@ -155,7 +155,8 @@ namespace Collections.Elena
 
         public ISimpleNumbers GetSimpleNumbersInstance(int limit)
         {
-            throw new NotImplementedException();
+            SimpleNumbers SimleN=new SimpleNumbers(limit);
+            return SimleN;
         }
     }
 }
