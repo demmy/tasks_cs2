@@ -8,41 +8,20 @@ namespace Collections.Elena
 {
     class SimpleNumbers:ISimpleNumbers
     {
-       private static List<int> simple = new List<int>();
-       
+       //private static List<int> simple = new List<int>();
+       SimpleNumbers instance;
+        private int maxNumber;
         public SimpleNumbers(int max)
         {
-         
-            for (int i = 1; i < max; i++)
-                simple.Add(i);
-            int j = 1;
-            while (j < simple.Count)
-            {
-                Step(simple[j], j);
-                j++;
-            }
-
-        }
-
-        int Step(int Prime, int startFrom)
-        {
-            int i = startFrom + 1;
-            int Removed = 0;
-            while (i < simple.Count)
-                if (simple[i] % Prime == 0)
-                {
-                    simple.RemoveAt(i);
-                    Removed++;
-                }
-                else
-                    i++;
-            return Removed;
+           // instance = as(SimpleNumbers)1;
+            maxNumber = max;
         }
 
         private class SNSequence : IEnumerator<int>
         {
-            private  int currentNumber = 0;
+            private  int current = 0;
             private SimpleNumbers instance;
+
             public SNSequence(SimpleNumbers instance)
             {
                 this.instance = instance;
@@ -52,11 +31,12 @@ namespace Collections.Elena
             {
                 get
                 {
-                    if (currentNumber == -1 ||currentNumber == simple.Count)
+                    return current;
+                    /*if (currentNumber == -1 ||currentNumber == simple.Count)
                     {
                         throw new InvalidOperationException();
                     }
-                    return simple[currentNumber]; 
+                    return simple[currentNumber]; */
                 }
             }
 
@@ -72,18 +52,41 @@ namespace Collections.Elena
 
             public bool MoveNext()
             {
-                //this.instance;
-               if (currentNumber != simple.Count)
+                bool rezult=false;
+                int temp = Current + 1;
+                int next = 0;
+                int exit = 0;
+                int i = 2;
+
+                while (exit == 0)
                 {
-                    currentNumber++;
+                    if (temp % i == 0 && i != temp)
+                    {
+                        temp++;
+                        i = 2;
+                        continue;
+                    }
+
+                    if ((i == temp) || (i > Math.Sqrt(temp)))
+                    {
+                        next = temp;
+                        exit = 1;
+                    }
+
+                    i++;
                 }
-                return currentNumber < simple.Count;
+                if (next <= instance.maxNumber)
+                { rezult = true;
+                current = next;
+                }
+                return rezult;
+              
               
             }
 
             public void Reset()
             {
-                currentNumber = -1;
+                current = -1;
             }
         }
 
