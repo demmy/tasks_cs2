@@ -42,13 +42,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cat.cs" />
+    <Compile Include="CatCreator.cs" />
     <Compile Include="ClinicRegistry.cs" />
     <Compile Include="Dog.cs" />
+    <Compile Include="DogCreator.cs" />
     <Compile Include="DomesticAnimal.cs" />
     <Compile Include="Fish.cs" />
+    <Compile Include="FishCreator.cs" />
     <Compile Include="Hamsted.cs" />
+    <Compile Include="HamstedCreator.cs" />
+    <Compile Include="IAnimalCreator.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnknownTypeOfAnimalException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
