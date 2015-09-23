@@ -144,7 +144,8 @@ namespace Collections.Alina
 
         public ISimpleNumbers GetSimpleNumbersInstance(int limit)
         {
-            throw new NotImplementedException();
+            return new SimpleNumber(limit);
+
         }
     }
 }
