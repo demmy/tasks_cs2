@@ -40,7 +40,7 @@ namespace Collections.Valeriya
 
             for (int i = 0; i < inputData.Count; i++)
             {
-                if (inputData[i].IsValid == true)
+                if (inputData[i].IsValid)
                 {
                     onlyValidFromInputData.Add(inputData[i]);
                 }
@@ -156,10 +156,9 @@ namespace Collections.Valeriya
             return returnDictionary;
         }
 
-
         public ISimpleNumbers GetSimpleNumbersInstance(int limit)
         {
-            throw new NotImplementedException();
+            return new SimpleNumbers(limit);
         }
     }
 }
