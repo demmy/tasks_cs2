@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alina\Customer.cs" />
+    <Compile Include="Alina\Goods.cs" />
+    <Compile Include="Alina\Shop.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -48,7 +51,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Alina\" />
     <Folder Include="Elena\" />
     <Folder Include="Konstantin\" />
     <Folder Include="Valeriya\" />
