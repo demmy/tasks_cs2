@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Patterns.Alina;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,8 +45,16 @@ namespace Patterns
 
         static void MainAlina()
         {
-            #region Observer
-            #endregion
+            Shop my = new Shop();
+            Customer c1 = new Customer("Pol");
+            Customer c2 = new Customer("Marry");
+            Customer c3 = new Customer("Sonya");
+            my.AddToClientList(c1);
+            my.AddToClientList(c2);
+            my.AddToClientList(c3);
+            my.GoodArrived += c1.BuyGoods;
+            my.GoodArrived += c2.IgnoreNotice;
+            my.GoodArrived += c3.UnsubscribeFromNotificationsg;
         }
 
         static void MainElena()
