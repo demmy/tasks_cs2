@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Patterns.Valeriya;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,6 +69,16 @@ namespace Patterns
         static void MainValeriya()
         {
             #region Observer
+
+            Shop store = new Shop();
+            Customer c1 = new Customer("Fred");
+            Customer c2 = new Customer("John");
+            Customer c3 = new Customer("Molly");
+            store.AddSubscriber(c1, c1.ReactOnGoodArrivalBuy);
+            store.AddSubscriber(c2, c2.ReactOnGoodArrivalIgnore);
+            store.AddSubscriber(c3, c3.ReactOnGoodArrivalUnSubscribe);
+            Console.ReadKey();
+
             #endregion
         }
     }
