@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Elena\Customer.cs" />
+    <Compile Include="Elena\IPublisher.cs" />
+    <Compile Include="Elena\ISubscriber.cs" />
+    <Compile Include="Elena\Shop.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -49,7 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Alina\" />
-    <Folder Include="Elena\" />
     <Folder Include="Konstantin\" />
     <Folder Include="Valeriya\" />
     <Folder Include="Vladimir\" />

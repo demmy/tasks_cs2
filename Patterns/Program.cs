@@ -51,6 +51,22 @@ namespace Patterns
         static void MainElena()
         {
             #region Observer
+            
+            while (Console.ReadLine() != "Q")
+            {
+                Elena.Shop MyShop = new Elena.Shop();
+                Elena.Customer c1 = new Elena.Customer("John Smit");
+                Elena.Customer c2 = new Elena.Customer("Maria Petrovna");
+                // MyShop.WhiteDressArrived += JohnSmit.ReactOnGoodArrivedPositive;
+                MyShop.ShopClosed += c1.ReactOnClossing;
+                MyShop.WhiteDressArrived += c1.ReactOnGoodArrivedNegative;
+                MyShop.MenShirtArrived += c1.ReactOnGoodArrivedPositive;
+                MyShop.ShopClosed += c2.ReactOnClossing;
+                MyShop.WhiteDressArrived += c2.ReactOnGoodArrivedPositive;
+                MyShop.MenShirtArrived += c1.ReactOnGoodArrivedNegative;
+                MyShop.RedDressArrived += c2.ReactOnGoodArrivedNull;
+            }
+            Console.ReadKey(true);
             #endregion
         }
 
